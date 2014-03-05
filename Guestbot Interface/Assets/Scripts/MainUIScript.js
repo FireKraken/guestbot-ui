@@ -1,10 +1,11 @@
 ﻿#pragma strict
+@script RequireComponent(AudioSource)
 
 private var ChatScripUrl= "http://127.0.0.1/chatscriptclient.php?";
 private var NewIDUrl= "http://127.0.0.1/chatscriptid.php?";
 private var userID = "attendee";
 
-private var userInput : String = "";
+private var userInput : String = "[Have a question? Type here]";
 
 private var userText : String = null;
 private var botOutput : String = null;
@@ -12,7 +13,7 @@ private var botOutput : String = null;
 private var consoleText : String;
 private var scrollPosition : Vector2 = Vector2.zero;
 private var showLog : boolean = false;
-private var logRect : Rect = Rect (20, 20, 350, Screen.height / 2);
+private var logRect : Rect = Rect (20, 20, 350, Screen.height * 3 / 4);
 
 public var textDelay = 0.2;
 private var words : String = "Testing, testing, one two, one two";
@@ -67,9 +68,11 @@ function TypeText (compareWords : String)
     	
         if(letter==13) break;
         if (words != compareWords) break;
+        
         currentWords += letter;
         // yield WaitForSeconds(textDelay);
         yield WaitForSeconds(textDelay * Random.Range(0.01, 0.5)); // Original Random.Range(0.5, 2)
+        audio.Play();
     }
     
     isTyping = false;
@@ -137,10 +140,7 @@ function OnGUI()
 			GUILayout.EndVertical();
 		GUILayout.EndHorizontal();
 		
-		GUI.skin = customSkin;
-		
 		// Text box for user input
-		GUILayout.Label("Have a question?");
 		userInput = GUILayout.TextField(userInput);
 				
 		// Horizontal field for "Log", "Reset" and "Rebuild" buttons
@@ -150,12 +150,12 @@ function OnGUI()
 			{
 				showLog = !showLog; // Toggles log visibility
 			}
-			if(GUILayout.Button("Start Over"))
+			/*if(GUILayout.Button("Start Over"))
 			{
 				getNewID();
 				postMessage("");
 				userText = null;
-			}
+			}*/
 			if (GUILayout.Button("Submit"))
 			{
 				// Recording timestamps for user inputs
