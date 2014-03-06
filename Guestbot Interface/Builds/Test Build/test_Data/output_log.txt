@@ -1,0 +1,56 @@
+Initialize engine version: 4.3.4f1 (e444f76e01cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.3489]
+    Renderer: Intel(R) HD Graphics 3000
+    Vendor:   Intel
+    VRAM:     848 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ashwath\Documents\GitHub\guestbot-ui\Guestbot Interface\Builds\Test Build\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ashwath\Documents\GitHub\guestbot-ui\Guestbot Interface\Builds\Test Build\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ashwath\Documents\GitHub\guestbot-ui\Guestbot Interface\Builds\Test Build\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Ashwath\Documents\GitHub\guestbot-ui\Guestbot Interface\Builds\Test Build\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.059 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 0.278973 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Total: 3.253917 ms (FindLiveObjects: 0.010729 ms CreateObjectMapping: 0.007464 ms MarkObjects: 0.154415 ms  DeleteObjects: 2.478575 ms)
+
+Platform assembly: C:\Users\Ashwath\Documents\GitHub\guestbot-ui\Guestbot Interface\Builds\Test Build\test_Data\Managed\Boo.Lang.dll (this message is harmless)
+ 377
+
+
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+http://127.0.0.1/chatscriptclient.php?message=&userID=+377%0d%0a%0d%0a
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+UnloadTime: 0.292036 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 134.
+Total: 0.868644 ms (FindLiveObjects: 0.008863 ms CreateObjectMapping: 0.030789 ms MarkObjects: 0.184738 ms  DeleteObjects: 0.084905 ms)
+
+UnloadTime: 0.259846 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Total: 9.492107 ms (FindLiveObjects: 0.007464 ms CreateObjectMapping: 0.012595 ms MarkObjects: 0.204332 ms  DeleteObjects: 8.651920 ms)
+
+ 378
+
+
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+http://127.0.0.1/chatscriptclient.php?message=&userID=+378%0d%0a%0d%0a
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
