@@ -13,7 +13,7 @@ private var botOutput : String = null;
 private var consoleText : String;
 private var scrollPosition : Vector2 = Vector2.zero;
 private var showLog : boolean = false;
-private var logRect : Rect = Rect (20, 20, 350, Screen.height * 3 / 4);
+private var logRect : Rect = Rect (20, 20, 350, Screen.height * 2 / 3);
 
 public var textDelay = 0.2;
 private var words : String = "Testing, testing, one two, one two";
@@ -30,6 +30,8 @@ private var isTyping : boolean = false;
 private var isAngry : boolean = false;
 private var angryIdentifier : String = "Angerangeranger";
 
+var idleTimer : float = 0.0;
+
 function Awake()
 {
 	anim = GetComponent(Animator);
@@ -40,7 +42,7 @@ function Start ()
 	yield getNewID();
 	postMessage("");
     
-    customStyle.fontSize = Screen.width / 40;
+    customStyle.fontSize = Screen.width / 60;
 }
 
 private function AddText(newText : String)
@@ -86,15 +88,24 @@ function OnGUI()
 	GUI.skin.box.alignment = TextAnchor.MiddleCenter; // Text alignment for boxes
 	GUI.skin.label.alignment = TextAnchor.MiddleLeft; // Text alignment
 	
+	if(Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.Return))
+	{
+		// Recording timestamps for user inputs
+		timeStamp = System.DateTime.Now;
+		currentTime = String.Format("{0:D2}:{1:D2}:{2:D2}", timeStamp.Hour, timeStamp.Minute, timeStamp.Second);
+
+		consoleText = consoleText+"\n["+currentTime+"] You said: "+userInput;
+
+
+		// consoleText = consoleText+"\n[You] said: "+userInput;
+		postMessage(userInput);
+		// userText = userInput;
+		userInput = "";
+	}
+	
 	GUILayout.BeginArea(Rect (Screen.width * 0.1, Screen.height * 0.1, Screen.width * 0.8, Screen.height * 0.8));	
 	
 	GUILayout.BeginVertical();
-		
-		// 	User text bubble
-	    // GUI.Box(Rect(0,Screen.height - 225,250,75), userText);
-	    
-	    // Bot text bubble
-	    // GUI.Box(Rect(0,Screen.height - 250,350,100), currentWords);
 	    
 	    if(showLog) // Manages log window elements
 		{
@@ -146,7 +157,7 @@ function OnGUI()
 		// Horizontal field for "Log", "Reset" and "Rebuild" buttons
 		GUILayout.BeginHorizontal();
 		
-			if(GUILayout.Button("Log"))
+			if(GUILayout.Button("Show Log"))
 			{
 				showLog = !showLog; // Toggles log visibility
 			}
@@ -156,19 +167,9 @@ function OnGUI()
 				postMessage("");
 				userText = null;
 			}*/
-			if (GUILayout.Button("Submit"))
+			if (GUILayout.Button("End Session"))
 			{
-				// Recording timestamps for user inputs
-				timeStamp = System.DateTime.Now;
-				currentTime = String.Format("{0:D2}:{1:D2}:{2:D2}", timeStamp.Hour, timeStamp.Minute, timeStamp.Second);
-				
-				consoleText = consoleText+"\n["+currentTime+"] You said: "+userInput;
-				
-				
-				// consoleText = consoleText+"\n[You] said: "+userInput;
-		        postMessage(userInput);
-		        // userText = userInput;
-		        userInput = "";
+				Application.LoadLevel("StartScene");
 			}
 			
 		GUILayout.EndHorizontal();
@@ -199,18 +200,24 @@ function Update ()
 		Debug.LogError("Animator is null!");
 
 	if(isTyping && isAngry)
-	{
 		anim.SetBool("IsAngryTalking", true);
-	}
 	else if(isTyping && !isAngry)
-	{
 		anim.SetBool("IsHappyTalking", true);
-	}
 	else
 	{
 		anim.SetBool("IsAngryTalking", false);
 		anim.SetBool("IsHappyTalking", false);
 	}
+	
+	// Measures how long the bot is idle
+	if(anim.GetBool("IsHappyTalking") || anim.GetBool("IsAngryTalking") || showLog)
+		idleTimer = 0.0f;
+	else
+		idleTimer += Time.deltaTime;
+	
+	// Sends the bot to the suspend state if it is idle for 60 seconds
+	if(idleTimer >= 60.0f)
+		Application.LoadLevel("StartScene");
 }
 
 function getNewID()
