@@ -13,31 +13,7 @@ function OnGUI ()
 	GUILayout.BeginArea (Rect (Screen.width * 0.1, Screen.height * 0.1, Screen.width * 0.8, Screen.height * 0.8));
 	GUI.skin = customSkin;
 	
-	// Not really the most ideal way to do this
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
-	GUILayout.FlexibleSpace ();
+	GUILayout.Space (Screen.height * 2 / 3);
 	
 	GUILayout.BeginHorizontal ();
 		GUILayout.BeginVertical ();
